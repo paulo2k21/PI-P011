@@ -2,5 +2,4 @@
 
 Resposta: É do tipo coesão sequencial e acoplamento de dados.
 
-
 */

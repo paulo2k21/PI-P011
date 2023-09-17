@@ -8,35 +8,42 @@ Escreva também uma função principal (main) que use a função maximin.*/
 
 #include <iostream>
 
-void maxmin(int vetor[], int n, int &maximo, int &minimo);
-
 using namespace std;
-int main()
-{
-    int maximo;
-    int minimo;
-
-    int vetor[] = {2, 3, 4};
-    int n = sizeof(vetor) / sizeof(vetor[0]);
-    maxmin(vetor, n, maximo, minimo);
-    cout << "O Valor maximo: " << maximo << endl
-         << "O Valor minimo: " << minimo << endl;
-}
 
 void maxmin(int vetor[], int n, int &maximo, int &minimo)
 {
-
-    minimo = vetor[0];
-    maximo = vetor[0];
-    for (int i = 0; i < n - 1; i++)
+    if (n <= 0)
     {
-        if (minimo > vetor[i + 1])
+        cout << "O vetor está vazio." << endl;
+        return;
+    }
+
+    maximo = vetor[0];
+    minimo = vetor[0];
+
+    for (int i = 1; i < n; i++)
+    {
+        if (vetor[i] > maximo)
         {
-            minimo = vetor[i + 1];
+            maximo = vetor[i];
         }
-        if (maximo < vetor[i + 1])
+        if (vetor[i] < minimo)
         {
-            maximo = vetor[i + 1];
+            minimo = vetor[i];
         }
     }
+}
+
+int main()
+{
+    const int tamanho = 5;
+    int meuVetor[tamanho] = {10, 5, 30, 15, 20};
+    int max, min;
+
+    maxmin(meuVetor, tamanho, max, min);
+
+    cout << "Máximo: " << max << endl;
+    cout << "Mínimo: " << min << endl;
+
+    return 0;
 }
